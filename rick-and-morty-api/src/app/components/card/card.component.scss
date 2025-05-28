@@ -1,0 +1,18 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+  border: black 1px solid;
+  border-radius: 1em;
+  background: darkgrey;
+  padding: 0.7em;
+  height: 26em;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+

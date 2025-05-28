@@ -1,0 +1,29 @@
+:root * {
+  font-family: "Lucida Handwriting", cursive;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+a:link {
+  color: inherit;
+}
+a:visited {
+  color: #458f00;
+}
+a:hover {
+  color: chartreuse;
+}
+a:active {
+  color: chartreuse;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: 2px dashed chartreuse;
+  outline-offset: 2px;
+}

@@ -1,0 +1,50 @@
+:host {
+  background-color: chartreuse;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  text-wrap: nowrap;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 5em;
+}
+
+.block-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  max-width: 60%;
+}
+span {
+  display: block;
+  padding-bottom: 2em;
+  font-size: 3em;
+}
+button {
+  display: flex;
+  justify-content: center;
+  border-width: 0.1em;
+  width: 5em;
+  border-radius: 1em;
+  font-size: 3em;
+  background: transparent;
+}
+
+button::after {
+  transform: translateY(-1.7em);
+  position: absolute;
+  content: url('../../../../public/rick-and-morty.png');
+}
+
+.rick {
+  display: block;
+  img {
+    width: 100%;
+  }
+}
