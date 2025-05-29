@@ -1,7 +1,14 @@
 <nav>
-  <a><img src="logo.png" alt=""></a>
-  <ng-content></ng-content>
-  <button>About</button>
-  <button>Contact</button>
-  <button>Light/Dark</button>
+  <div class="navigaton">
+    <a><img src="logo.png" alt=""></a>
+    <button (click)="redirect('characters')">Characters</button>
+    <button (click)="redirect('episodes')">Episodes</button>
+    <button (click)="redirect('locations')">Locations</button>
+  </div>
+  <div class="sideNav">
+    <ng-content></ng-content>
+    <button>About</button>
+    <button>Contact</button>
+    <button>Light/Dark</button>
+  </div>
 </nav>

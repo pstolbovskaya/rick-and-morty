@@ -1,0 +1,25 @@
+.location-card {
+  display: flex;
+  flex-direction: column;
+  background-color: darkgrey;
+  border-radius: 1em;
+  border: 1px solid black;
+  width: 15em;
+  height: 20em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.name {
+  text-align: center;
+  color: chartreuse;
+  font-size: 1.8em;
+  font-weight: bold;
+  height: 5em;
+}
+.parameters {
+  align-items: end;
+}
+.description {
+  font-weight: bold;
+}

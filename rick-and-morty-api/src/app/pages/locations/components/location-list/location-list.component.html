@@ -1,0 +1,6 @@
+<div class="location-list">
+
+@for (location of locations; track location.id) {
+  <location-card-component [location]="location"></location-card-component>
+}
+</div>

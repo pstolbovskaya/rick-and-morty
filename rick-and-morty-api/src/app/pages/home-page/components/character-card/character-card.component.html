@@ -3,7 +3,7 @@
     <img [src]="character.image" [alt]="character.id">
   </div>
   <div class="content">
-    <a [href]="character.url">{{ character.name }}</a>
+    <a [routerLink]="['/details', character.id]">{{ character.name }}</a>
     <span>Status: {{ character.status }}</span>
     <span>Last seen: <a [href]="character.location.url">{{ character.location.name }}</a></span>
     <span>First appearance: <a [href]="character.episode[1]">Episode</a></span>

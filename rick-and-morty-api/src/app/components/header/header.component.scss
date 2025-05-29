@@ -1,3 +1,25 @@
 nav {
   margin-bottom: 1em;
+  display: flex;
+  position: sticky;
+  align-items: center;
+  place-content: space-between;
+  top: 0;
+  background-color: white;
+}
+.navigaton {
+  display: flex;
+  align-items: center;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sideNav {
 }
