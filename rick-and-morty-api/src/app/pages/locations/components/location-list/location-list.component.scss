@@ -2,5 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   place-content: space-evenly;
-  gap: 1em;
+  //gap: 1em;
+  overflow-y: scroll;
+  height: 80vh;
+  margin: 1em;
 }

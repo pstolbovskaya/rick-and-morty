@@ -1,9 +1,10 @@
 import {Component, inject} from '@angular/core';
-import {Observable} from 'rxjs';
 import {AppService} from '../../services/app.service';
 import {Episode} from '../../models/episode.model';
 import {HeaderComponent} from '../../components/header/header.component';
 import {EpisodeListComponent} from './components/episode-list/episode-list.component';
+import {PaginatorComponent} from '../../components/paginator/paginator.component';
+import {AbstractPage} from '../abstractPage';
 
 @Component({
   selector: 'app-episodes',
@@ -11,22 +12,22 @@ import {EpisodeListComponent} from './components/episode-list/episode-list.compo
   templateUrl: './episodes.component.html',
   imports: [
     HeaderComponent,
-    EpisodeListComponent
+    EpisodeListComponent,
+    PaginatorComponent
   ],
 })
 
-export class EpisodesComponent {
-  private appService: AppService = inject(AppService);
+export class EpisodesComponent extends AbstractPage{
   protected episodes: Episode[] = [];
-  private pageNumber: number = 1;
 
-  ngOnInit() {
-    this.getEpidodes(this.pageNumber)
+  ngOnInit(): void {
+    this.init();
   }
 
-  getEpidodes(page: number = 1) {
-    this.appService.getEpisodes(page).subscribe(episodes => {
+  getContent() {
+    this.appService.getEpisodes(this.pageNumber).subscribe(episodes => {
       this.episodes = episodes.results;
+      this.maxPage  = episodes.info.pages;
     });
   }
 }

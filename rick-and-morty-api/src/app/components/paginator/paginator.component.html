@@ -1,3 +1,5 @@
-<button [disabled]="currentPage<=1" (click)="onPageChange(-1)"> < </button>
-<span>{{currentPage}}</span>
-<button [disabled]="maxPages<=currentPage" (click)="onPageChange(1)"> > </button>
+<div class="paginator">
+  <button [disabled]="currentPage<=1" (click)="onPageChange(-1)"> <</button>
+  <span>{{ currentPage }}</span>
+  <button [disabled]="maxPages<=currentPage" (click)="onPageChange(1)"> ></button>
+</div>

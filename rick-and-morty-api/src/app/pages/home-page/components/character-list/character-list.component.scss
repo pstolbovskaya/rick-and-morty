@@ -3,5 +3,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   place-content: space-evenly;
+  overflow-y: scroll;
+  height: calc(90vh - var(--paginator-height, 3vh) - var(--header-height, 3vh));
+  margin: 1em;
+  padding: 0.7em;
   //gap: 1em;
 }

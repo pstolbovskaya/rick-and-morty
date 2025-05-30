@@ -1,2 +1,3 @@
 <header-component><input placeholder="Search by location..."></header-component>
 <location-list-component [locations]="locations"></location-list-component>
+<app-paginator [maxPages]="maxPage" [currentPage]="pageNumber" (pageChange)="onPageChanged($event)"></app-paginator>

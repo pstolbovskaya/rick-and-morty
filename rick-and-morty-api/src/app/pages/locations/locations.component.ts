@@ -3,6 +3,8 @@ import {HeaderComponent} from '../../components/header/header.component';
 import {Location} from '../../models/location.model';
 import {AppService} from '../../services/app.service';
 import {LocationListComponent} from './components/location-list/location-list.component';
+import {PaginatorComponent} from '../../components/paginator/paginator.component';
+import {AbstractPage} from '../abstractPage';
 
 @Component({
   selector: 'app-locations',
@@ -10,30 +12,22 @@ import {LocationListComponent} from './components/location-list/location-list.co
   styleUrls: ['./locations.component.scss'],
   imports: [
     HeaderComponent,
-    LocationListComponent
+    LocationListComponent,
+    PaginatorComponent
   ],
 })
 
-export class LocationsComponent {
+export class LocationsComponent extends AbstractPage{
   protected locations: Location[] = [];
-  public maxPage = 1;
-  protected pageNumber: number = 1;
-  private appService: AppService = inject(AppService);
 
   ngOnInit(): void {
-    this.getLocations();
+    this.init();
   }
 
-  onPageChangePage(page: number): void {
-    this.pageNumber = page;
-    this.getLocations(this.pageNumber)
-  }
-
-  getLocations(page: number = 1) {
-    this.appService.getLocations(page).subscribe(locations => {
+  getContent(page: number = 1) {
+    this.appService.getLocations(this.pageNumber).subscribe(locations => {
       this.locations = locations.results;
       this.maxPage = locations.info.pages;
-      console.log(this.maxPage);
     })
   }
 }

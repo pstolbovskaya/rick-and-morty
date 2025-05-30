@@ -4,6 +4,8 @@ import {Character} from '../../models/character.model';
 import {AppService} from '../../services/app.service';
 import {CharacterListComponent} from './components/character-list/character-list.component';
 import {PaginatorComponent} from '../../components/paginator/paginator.component';
+import {Router, Params, ActivatedRoute} from '@angular/router';
+import {AbstractPage} from '../abstractPage';
 
 @Component({
   selector: 'home-page',
@@ -12,26 +14,17 @@ import {PaginatorComponent} from '../../components/paginator/paginator.component
   imports: [HeaderComponent, CharacterListComponent, PaginatorComponent],
 })
 
-export class HomePageComponent {
+export class HomePageComponent extends AbstractPage{
   protected characters: Character[] = [];
-  public maxPage = 1;
-  protected pageNumber: number = 1;
-  private appService: AppService = inject(AppService);
 
   ngOnInit(): void {
-    this.getCharacters();
+    this.init()
   }
 
-  onPageChangePage(page: number): void {
-    this.pageNumber = page;
-    this.getCharacters(this.pageNumber)
-  }
-
-  getCharacters(page: number = 1) {
-    this.appService.getCharacters(page).subscribe(characters => {
+  getContent() {
+    this.appService.getCharacters(this.pageNumber).subscribe(characters => {
       this.characters = characters.results;
       this.maxPage = characters.info.pages;
-      console.log(this.maxPage);
     })
   }
 }
