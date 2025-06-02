@@ -32,3 +32,33 @@ a:focus {
   outline: 2px dashed chartreuse;
   outline-offset: 2px;
 }
+
+
+.filter {
+  border-radius: 1em;
+  border-color: grey;
+}
+.filter::placeholder {
+  color: grey;
+}
+
+$bgColor_light: #dcddc3;
+$bgColor_dark: #404040;
+
+$textColor_light: #404040;
+$textColor_dark: #dcddc3;
+
+$borderColor_light: #404040;
+$borderColor_dark: #dcddc3;
+
+@mixin light{
+  --bgColor: #{bgColor_light};
+  --textColor: #{textColor_light};
+  --borderColor: #{borderColor_light};
+}
+
+@mixin dark{
+  --bgColor: #{bgColor_dark};
+  --textColor: #{textColor_dark};
+  --borderColor: #{borderColor_dark};
+}

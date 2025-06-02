@@ -1,5 +1,4 @@
-import {Component, inject} from '@angular/core';
-import {AppService} from '../../services/app.service';
+import {Component} from '@angular/core';
 import {Episode} from '../../models/episode.model';
 import {HeaderComponent} from '../../components/header/header.component';
 import {EpisodeListComponent} from './components/episode-list/episode-list.component';
@@ -29,5 +28,14 @@ export class EpisodesComponent extends AbstractPage{
       this.episodes = episodes.results;
       this.maxPage  = episodes.info.pages;
     });
+  }
+
+  listenFilter() {
+    /*this.filterControl.valueChanges.pipe().subscribe(filter => {
+      this.filterControl.setValue(filter);
+      this.appService.getFilteredCharacters(filter).subscribe(characters => {
+        this.characters = characters.results;
+      });
+    });*/
   }
 }

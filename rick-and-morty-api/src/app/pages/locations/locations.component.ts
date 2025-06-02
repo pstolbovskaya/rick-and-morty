@@ -1,7 +1,6 @@
-import {Component, inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {HeaderComponent} from '../../components/header/header.component';
 import {Location} from '../../models/location.model';
-import {AppService} from '../../services/app.service';
 import {LocationListComponent} from './components/location-list/location-list.component';
 import {PaginatorComponent} from '../../components/paginator/paginator.component';
 import {AbstractPage} from '../abstractPage';
@@ -29,5 +28,14 @@ export class LocationsComponent extends AbstractPage{
       this.locations = locations.results;
       this.maxPage = locations.info.pages;
     })
+  }
+
+  listenFilter() {
+    /*this.filterControl.valueChanges.pipe().subscribe(filter => {
+      this.filterControl.setValue(filter);
+      this.appService.getFilteredCharacters(filter).subscribe(characters => {
+        this.characters = characters.results;
+      });
+    });*/
   }
 }

@@ -1,24 +1,27 @@
-import {Component, Input, Output, inject} from '@angular/core';
+import {Component, DestroyRef, inject} from '@angular/core';
 import {HeaderComponent} from '../../components/header/header.component';
-import {Character} from '../../models/character.model';
-import {AppService} from '../../services/app.service';
+import {Character, CharactersDTO} from '../../models/character.model';
 import {CharacterListComponent} from './components/character-list/character-list.component';
 import {PaginatorComponent} from '../../components/paginator/paginator.component';
-import {Router, Params, ActivatedRoute} from '@angular/router';
 import {AbstractPage} from '../abstractPage';
+import {catchError, debounce, debounceTime, filter, interval, Observable, Observer, of, retry, switchMap} from 'rxjs';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'home-page',
   templateUrl: 'home-page.component.html',
   styleUrls: ['home-page.component.scss'],
-  imports: [HeaderComponent, CharacterListComponent, PaginatorComponent],
+  imports: [HeaderComponent, CharacterListComponent, PaginatorComponent, ReactiveFormsModule],
 })
 
 export class HomePageComponent extends AbstractPage{
   protected characters: Character[] = [];
+  protected filterControl = new FormControl();
+  private destroyRef: DestroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
-    this.init()
+    this.init();
   }
 
   getContent() {
@@ -27,4 +30,12 @@ export class HomePageComponent extends AbstractPage{
       this.maxPage = characters.info.pages;
     })
   }
+
+  listenFilter() {
+    this.filterControl.valueChanges.pipe(debounceTime(1000), switchMap((filter: string) =>
+      this.appService.getFilteredCharacters(filter)), catchError((err, catched) => catched), takeUntilDestroyed(this.destroyRef)).subscribe((characters) => {
+        this.characters = characters.results;
+      });
+  }
+
 }

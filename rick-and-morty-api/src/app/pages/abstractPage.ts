@@ -14,6 +14,7 @@ export abstract class AbstractPage {
     this.activatedRoute.queryParams.pipe(takeUntilDestroyed()).subscribe((params: Params): void => {
       this.pageNumber = +params['page'] ? +params['page'] : 1;
     });
+
   }
 
   init() {
@@ -26,6 +27,7 @@ export abstract class AbstractPage {
     });
 
     this.getContent();
+    this.listenFilter();
   }
 
   onPageChanged(page: number): void {
@@ -41,4 +43,5 @@ export abstract class AbstractPage {
   }
 
   abstract getContent(): void
+  abstract listenFilter(): void;
 }
