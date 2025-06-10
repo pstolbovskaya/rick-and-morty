@@ -1,4 +1,4 @@
-import {Component, DestroyRef, inject} from '@angular/core';
+import {Component, DestroyRef, inject, signal} from '@angular/core';
 import {HeaderComponent} from '../../components/header/header.component';
 import {Character, CharactersDTO} from '../../models/character.model';
 import {CharacterListComponent} from './components/character-list/character-list.component';
@@ -6,7 +6,7 @@ import {PaginatorComponent} from '../../components/paginator/paginator.component
 import {AbstractPage} from '../abstractPage';
 import {catchError, debounce, debounceTime, filter, interval, Observable, Observer, of, retry, switchMap} from 'rxjs';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'home-page',

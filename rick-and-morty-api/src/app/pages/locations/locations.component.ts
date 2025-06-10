@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, computed, Signal, signal, WritableSignal} from '@angular/core';
 import {HeaderComponent} from '../../components/header/header.component';
 import {Location} from '../../models/location.model';
 import {LocationListComponent} from './components/location-list/location-list.component';
